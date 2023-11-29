@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
-import Landing from "./pages/Landing";
+import { Landing } from "./pages/LandlingPage/Landing";
 function App() {
   return (
     <div className="App">
