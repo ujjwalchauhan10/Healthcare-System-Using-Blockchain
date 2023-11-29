@@ -18,6 +18,7 @@ export const Landing = () => {
           </h1>
           <div>
             <p className="md:text-5xl sm:text-4xl text-xl font-bold py-6">
+              {" "}
               Introducing Fast , Flexible and Secure Reports using
             </p>
             <Typed
