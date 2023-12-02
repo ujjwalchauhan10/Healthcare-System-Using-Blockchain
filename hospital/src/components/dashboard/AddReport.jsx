@@ -30,7 +30,7 @@ const AddReport = () => {
   return (
     <div>
       <div className="text-[#0f0f0f] font-bold p-2 pb-5">Add Report</div>
-      <div className="bg-[#f5f5f5] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4">
+      <div className="border-[2px] border-[#f0f0f0] bg-[#f9f9f9] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4">
         <form
           onSubmit={handleSubmit}
           className="w-full mt-[65px] flex flex-col gap-[30px]"
