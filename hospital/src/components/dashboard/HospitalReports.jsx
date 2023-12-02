@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useStateContext } from "../../context";
 import DocCard from "../UI/docCard/DocCard";
-import { fetchUserReports } from "../../web3";
+import { fetchHospitalReports } from "../../web3";
 
 const HospitalReports = () => {
   const { address } = useStateContext();
@@ -9,7 +9,7 @@ const HospitalReports = () => {
 
   const setReportsData = async () => {
     try {
-      const data = await fetchUserReports();
+      const data = await fetchHospitalReports();
       setReports(data);
     } catch (error) {}
   };

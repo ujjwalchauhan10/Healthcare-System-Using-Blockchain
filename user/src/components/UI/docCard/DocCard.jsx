@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "../Button";
 
 const DocCard = ({ uri }) => {
-  console.log(uri);
   return (
     <div>
       <a href={uri} target="_blank" rel="noopener noreferrer">

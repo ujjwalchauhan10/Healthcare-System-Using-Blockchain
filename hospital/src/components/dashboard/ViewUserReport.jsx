@@ -6,6 +6,7 @@ import { fetchUserReports } from "../../web3";
 const ViewUserReports = () => {
   const { address } = useStateContext();
   const [reports, setReports] = useState([]);
+  const [userAddress, setUserAddress] = useState("");
 
   const setReportsData = async () => {
     try {
@@ -21,7 +22,10 @@ const ViewUserReports = () => {
   }, [address]);
   return (
     <div>
-      User Reports
+      <div>User Reports</div>
+      <form action="">
+        <input type="text" />
+      </form>
       <div>
         {reports &&
           reports[0] &&
