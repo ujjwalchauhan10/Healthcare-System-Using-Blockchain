@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useStateContext } from "../context";
-import { Navbar } from "../components/Navbar";
+import { Navbar } from "../components/navbar";
 import DocCard from "../components/UI/docCard/DocCard";
 import { fetchUserReports } from "../web3";
 
