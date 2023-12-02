@@ -1,12 +1,9 @@
 import React from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
+import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "../UI/Button";
 import { useStateContext } from "../../context";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 const Navbar = () => {
   const { connectMetamask, address } = useStateContext();
@@ -18,31 +15,22 @@ const Navbar = () => {
             <div className="flex h-16 justify-between">
               <div className="flex px-2 lg:px-0">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt="Your Company"
-                  />
+                  <Link to="/">
+                    <img
+                      className="h-8 w-auto"
+                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                      alt="Your Company"
+                    />
+                  </Link>
                 </div>
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8 text-black">
-                  <a
+                  <Link
+                    to="/dashboard"
                     href="/"
-                    className="inline-flex items-center border-b-2 border-[#055F4D] px-1 pt-1 text-sm font-medium text-black"
+                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-black"
                   >
                     Dashboard
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium  text-black hover:border-[#055F4D] hover:text-[#055F4D]"
-                  >
-                    Team
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium  text-black hover:border-[#055F4D] hover:text-[#055F4D]"
-                  >
-                    Projects
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="flex items-center lg:hidden">

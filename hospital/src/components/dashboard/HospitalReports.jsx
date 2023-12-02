@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { useStateContext } from "../../context";
 import { fetchHospitalReports } from "../../web3";
 import { Button } from "../UI/Button";
+import { useRef } from "react";
 
 const HospitalReports = () => {
   const { address } = useStateContext();
@@ -23,12 +24,23 @@ const HospitalReports = () => {
   ];
   const date = ["01/02/23", "13/04/22", "21/02/23", "11/12/23", "31/01/23"];
   const category = ["Discharge", "Track", "Urgent", "Progress", "Summary"];
+  const refExport = useRef(null);
 
   const setReportsData = async () => {
     try {
       const data = await fetchHospitalReports();
       setReports(data);
     } catch (error) {}
+  };
+
+  const exportData = () => {
+    const csvContent =
+      "data:text/csv;charset=utf-8," + reports.map((report) => report + "\n");
+    if (refExport.current) {
+      refExport.current.href = csvContent;
+      refExport.current.download = `Reports.csv`;
+      refExport.current.click();
+    }
   };
 
   useEffect(() => {
@@ -39,6 +51,9 @@ const HospitalReports = () => {
   return (
     <div>
       <div className="text-[#0f0f0f] font-bold p-2 pb-5">Hospital Reports</div>
+      <a href="" hidden={true} ref={refExport}>
+        Download
+      </a>
       <div>
         {reports && reports[0] && (
           <TableContainer component={Paper}>
@@ -84,6 +99,16 @@ const HospitalReports = () => {
           </TableContainer>
         )}
       </div>
+      {reports && reports[0] && (
+        <div className="flex items-center justify-center mt-3">
+          <Button
+            variant="contained"
+            className="rounded"
+            buttonText={"Download"}
+            onClick={() => exportData()}
+          />
+        </div>
+      )}
     </div>
   );
 };
