@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import SoulBoundToken from "../web3/abi.json";
 
-const contractAddress = "0x925B1f0CC6e385849b2d7202799843cc71084605";
+const contractAddress = "0x3A6cf5F0C4908076e409510BBF8b33d04090Bb00";
 
 export const fetchUserReports = async () => {
   try {

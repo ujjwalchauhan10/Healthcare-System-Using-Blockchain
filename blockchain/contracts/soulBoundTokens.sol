@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
+
 import "@openzeppelin/contracts@4.7.0/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts@4.7.0/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts@4.7.0/access/Ownable.sol";
@@ -14,6 +15,8 @@ contract SoulBoundToken is ERC721, ERC721URIStorage, Ownable {
         string name;
         address addr;
     }
+
+    address[] private _minterAddresses;
 
     mapping(uint256 => Minter) private _tokenMinters; // Mapping to store minter for each token
     mapping(address => uint256[]) private _minterTokens; // Mapping to store tokens minted by each minter
@@ -118,16 +121,9 @@ contract SoulBoundToken is ERC721, ERC721URIStorage, Ownable {
         emit MinterNameEdited(minterAddr, newName);
     }
 
-    function getMintersData() public view onlyOwner returns (Minter[] memory) {
-        uint256 numMinters = _tokenIdCounter.current();
-        Minter[] memory mintersData = new Minter[](numMinters);
-
-        for (uint256 i = 0; i < numMinters; i++) {
-            mintersData[i] = _minters[_tokenMinters[i].addr];
-        }
-
-        return mintersData;
-    }
+    function getMintersAddresses() public view onlyOwner returns (address[] memory) {
+    return _minterAddresses;
+}
 
     function burn(uint256 tokenId) external {
         address tokenOwner = ownerOf(tokenId);
@@ -166,6 +162,7 @@ contract SoulBoundToken is ERC721, ERC721URIStorage, Ownable {
             _minters[minterAddr].addr != minterAddr,
             "Address is already a minter"
         );
+        _minterAddresses.push(minterAddr);
         _minters[minterAddr] = Minter(name, minterAddr);
         emit MinterAdded(name, minterAddr);
     }
@@ -175,6 +172,15 @@ contract SoulBoundToken is ERC721, ERC721URIStorage, Ownable {
             _minters[minterAddr].addr == minterAddr,
             "Address is not a minter"
         );
+        for (uint256 i = 0; i < _minterAddresses.length; i++) {
+        if (_minterAddresses[i] == minterAddr) {
+            // Move the last element to the position to be deleted
+            _minterAddresses[i] = _minterAddresses[_minterAddresses.length - 1];
+            // Remove the last element (which is now a duplicate)
+            _minterAddresses.pop();
+            break;
+        }
+    }
         delete _minters[minterAddr];
         emit MinterRemoved(minterAddr);
     }

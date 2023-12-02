@@ -3,7 +3,7 @@ import SoulBoundToken from "../web3/abi.json";
 
 const contractAddress = "0x3A6cf5F0C4908076e409510BBF8b33d04090Bb00";
 
-export const fetchUserReports = async (userAddress) => {
+export const fetchMinters = async () => {
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
@@ -13,14 +13,14 @@ export const fetchUserReports = async (userAddress) => {
       SoulBoundToken.output.abi,
       signer
     );
-    const resp = await contract.getUserTokenURIsByMinter(userAddress);
+    const resp = await contract.getMintersAddresses();
     return resp;
   } catch (error) {
     return error;
   }
 };
 
-export const fetchHospitalReports = async () => {
+export const addMinter = async (name, minterAddress) => {
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
@@ -30,14 +30,15 @@ export const fetchHospitalReports = async () => {
       SoulBoundToken.output.abi,
       signer
     );
-    const resp = await contract.getMinterTokenURIs();
+    const resp = await contract.addMinter(name, minterAddress);
     return resp;
   } catch (error) {
     return error;
   }
 };
 
-export const addReport = async (to,uri) => {
+export const removeMinter = async (minterAddress) => {
+  console.log(minterAddress);
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
@@ -47,7 +48,7 @@ export const addReport = async (to,uri) => {
       SoulBoundToken.output.abi,
       signer
     );
-    const resp = await contract.safeMint(to,uri);
+    const resp = await contract.removeMinter(minterAddress);
     return resp;
   } catch (error) {
     return error;
