@@ -313,24 +313,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "getMintersData",
+				"name": "getMintersAddresses",
 				"outputs": [
 					{
-						"components": [
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "address",
-								"name": "addr",
-								"type": "address"
-							}
-						],
-						"internalType": "struct SoulBoundToken.Minter[]",
+						"internalType": "address[]",
 						"name": "",
-						"type": "tuple[]"
+						"type": "address[]"
 					}
 				],
 				"stateMutability": "view",
@@ -715,7 +703,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/6_Mark_3.sol": "SoulBoundToken"
+			"contracts/7_Mark_4.sol": "SoulBoundToken"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -825,12 +813,12 @@
 				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
 			]
 		},
-		"contracts/6_Mark_3.sol": {
-			"keccak256": "0xb50f1bcd2622a8b053f3623b94d9ef7509ee716f136c606a106730f4158c9f65",
+		"contracts/7_Mark_4.sol": {
+			"keccak256": "0x08130edca89654969abf212f894ef74b30fc74e1f28a3bbcdfe2bb261f4c44ab",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://391d69d3ea0cefdeb7a9a05dafd5aa32581d56b9cf6117033c45a4726b21ad60",
-				"dweb:/ipfs/QmaBs3UC5T7Y2iENBF1PZDR7wioW3ZrEA3KLEbLzvWP9gU"
+				"bzz-raw://716761c82024a9cda57e8f26fc13c55e99908f7803ef467de79644e3ea4df793",
+				"dweb:/ipfs/QmYJERUso4rQ7q4MzadvQSZtgGWj4cm9FpJtUTDaQ4vNgw"
 			]
 		}
 	},
