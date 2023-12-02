@@ -21,7 +21,7 @@ const HospitalReports = () => {
   }, [address]);
   return (
     <div>
-      Hospital Reports
+      <div className="text-[#0f0f0f] font-bold p-2 pb-5">Hospital Reports</div>
       <div>
         {reports &&
           reports[0] &&
