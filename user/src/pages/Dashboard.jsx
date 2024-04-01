@@ -18,15 +18,15 @@ const Dashboard = () => {
 
   const refExport = useRef(null);
 
-  const hospitals = [
-    "Hospital A",
-    "Hospital B",
-    "Hospital C",
-    "Hospital D",
-    "Hospital E",
-  ];
+  const hospitals = ["Apollo", "Fortis", "Narayana", "Max", "Aster"];
   const date = ["01/02/23", "13/04/22", "21/02/23", "11/12/23", "31/01/23"];
-  const category = ["Discharge", "Track", "Urgent", "Progress", "Summary"];
+  const category = [
+    "Discharge",
+    "Operative",
+    "Diagnostic",
+    "Progress",
+    "Consultation",
+  ];
 
   const setReportsData = async () => {
     try {
