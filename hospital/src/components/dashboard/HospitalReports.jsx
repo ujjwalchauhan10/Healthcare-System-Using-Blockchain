@@ -15,7 +15,6 @@ const HospitalReports = () => {
   const { address } = useStateContext();
   const [reports, setReports] = useState([]);
 
-  const hospitals = ["Apollo", "Fortis", "Narayana", "Max", "Aster"];
   const date = ["01/02/23", "13/04/22", "21/02/23", "11/12/23", "31/01/23"];
   const category = [
     "Discharge",
@@ -60,7 +59,6 @@ const HospitalReports = () => {
             <Table sx={{ minWidth: 1 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="center">Hospital Name</TableCell>
                   <TableCell align="center">Date</TableCell>
                   <TableCell align="center">Category</TableCell>
                   <TableCell align="center">Report</TableCell>
@@ -72,9 +70,6 @@ const HospitalReports = () => {
                     key={index}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell align="center">
-                      {hospitals[Math.floor(Math.random() * (4 - 0 + 1)) + 0]}
-                    </TableCell>
                     <TableCell align="center">
                       {date[Math.floor(Math.random() * (4 - 0 + 1)) + 0]}
                     </TableCell>
