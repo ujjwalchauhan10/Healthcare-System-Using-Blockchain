@@ -15,14 +15,16 @@ const AddMinter = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await addMinter(form.name, form.minterAddress);
-    if (data) {
-      setForm({
-        name: "",
-        minterAddress: "",
-      });
-      alert("Minter Added Successfully!");
-    } else {
+    try {
+      const data = await addMinter(form.name, form.minterAddress);
+      if (data) {
+        setForm({
+          name: "",
+          minterAddress: "",
+        });
+        alert("Minter Added Successfully!");
+      }
+    } catch (error) {
       alert("Something Went Wrong!");
     }
   };

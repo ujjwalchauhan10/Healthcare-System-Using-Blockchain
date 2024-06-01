@@ -28,6 +28,7 @@ const HospitalReports = () => {
   const setReportsData = async () => {
     try {
       const data = await fetchHospitalReports();
+      console.log("Here", data);
       setReports(data);
     } catch (error) {}
   };
@@ -65,30 +66,36 @@ const HospitalReports = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {reports.map((uri, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell align="center">
-                      {date[Math.floor(Math.random() * (4 - 0 + 1)) + 0]}
-                    </TableCell>
-                    <TableCell align="center">
-                      {category[Math.floor(Math.random() * (4 - 0 + 1)) + 0]}
-                    </TableCell>
-                    <TableCell align="center">
-                      {
-                        <a href={uri} target="_blank" rel="noopener noreferrer">
-                          <Button
-                            variant="contained"
-                            className="rounded"
-                            buttonText={"View"}
-                          />
-                        </a>
-                      }
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {reports &&
+                  reports[0] &&
+                  reports.map((uri, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell align="center">
+                        {date[Math.floor(Math.random() * (4 - 0 + 1)) + 0]}
+                      </TableCell>
+                      <TableCell align="center">
+                        {category[Math.floor(Math.random() * (4 - 0 + 1)) + 0]}
+                      </TableCell>
+                      <TableCell align="center">
+                        {
+                          <a
+                            href={uri}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button
+                              variant="contained"
+                              className="rounded"
+                              buttonText={"View"}
+                            />
+                          </a>
+                        }
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>

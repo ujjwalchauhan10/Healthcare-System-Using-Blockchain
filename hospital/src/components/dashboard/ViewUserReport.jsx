@@ -44,11 +44,13 @@ const ViewUserReports = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await fetchUserReports(form.userAddress);
-    if (data) {
-      setReports(data);
-      alert("Report Fetched Successfully!");
-    } else {
+    try {
+      const data = await fetchUserReports(form.userAddress);
+      if (data) {
+        setReports(data);
+        alert("Report Fetched Successfully!");
+      }
+    } catch (error) {
       alert("Something Went Wrong!");
     }
   };

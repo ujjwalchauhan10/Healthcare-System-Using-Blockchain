@@ -23,10 +23,12 @@ const Minters = () => {
 
   const removeMinterFromContract = async (address) => {
     if (prompt("Enter DELETE to confirm") === "DELETE") {
-      const { data } = await removeMinter(address);
-      if (data) {
-        alert("Minter Is Being Removed!");
-      } else {
+      try {
+        const  data  = await removeMinter(address);
+        if (data) {
+          alert("Minter Is Being Removed!");
+        }
+      } catch (error) {
         alert("Something Went Wrong!");
       }
       setMintersData();

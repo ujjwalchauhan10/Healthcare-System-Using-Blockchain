@@ -15,14 +15,17 @@ const AddReport = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await addReport(form.to, form.uri);
-    if (data) {
-      setForm({
-        to: "",
-        uri: "",
-      });
-      alert("Report Minted Successfully!");
-    } else {
+    try {
+      const data = await addReport(form.to, form.uri);
+      console.log(data);
+      if (data) {
+        setForm({
+          to: "",
+          uri: "",
+        });
+        alert("Report Minted Successfully!");
+      }
+    } catch (error) {
       alert("Something Went Wrong!");
     }
   };
